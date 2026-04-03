@@ -28,7 +28,7 @@ const Header = () => {
           <ul className="nav-links">
             <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
             <li><a href="#events" onClick={() => setIsMenuOpen(false)}>Events</a></li>
-            <li><a href="#leaderboard" onClick={() => setIsMenuOpen(false)}>Department Leaderboard</a></li>
+            <li><a href="#leaderboard" onClick={() => setIsMenuOpen(false)}>Leaderboard</a></li>
             <li><a href="#winners" onClick={() => setIsMenuOpen(false)}>Winners</a></li>
             <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
           </ul>
