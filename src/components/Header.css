@@ -1,0 +1,138 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.union-logo-img {
+  height: 95px;
+  /* Pushed significantly further up to protrude organically past the glass navbar limits like a hanging badge natively */
+  width: auto;
+  max-width: 60vw;
+  /* Scales horizontal limit up to accommodate massive dimensions safely */
+  pointer-events: auto;
+  filter: url(#color-sargam);
+  /* Uses custom exact `#fff2a8` color matrix injected in Header.jsx */
+  position: relative;
+  z-index: 200;
+  /* Structurally stays strictly locked above sliding offscreen backdrop logic */
+  transition: all 0.3s ease;
+}
+
+.union-logo-img:hover {
+  filter: url(#duotone-red) drop-shadow(0px 0px 8px rgba(255, 0, 0, 0.4));
+  /* Smooth atmospheric red hover glow natively */
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff2a8;
+  /* Mathematically locked exactly to the native pale yellow of the SARGAM title */
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ff3333;
+  /* Shifts aggressively to a bright red core */
+  text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+  /* High-intensity deep red LED glow identically matching the heavy #duotone-red color-grading applied algorithmically to the left image */
+}
+
+/* Mobile Toggle Hamburger Defaults (Hidden completely on Desktop monitor bounds) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 200;
+  /* Stays locked to the top-level Z axis above the backdrop menu natively */
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff2a8;
+  /* Synchronized strictly to the SARGAM text color natively */
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* SMARTPHONE OPTIMIZATION LOGIC */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    /* Activate and reveal animated hamburger icon organically */
+  }
+
+  /* Hamburger to X Transform Animation logic */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Decouple the standard Flex nav and physically convert it into an absolute off-screen fullscreen drawer */
+  .header-right {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Hide completely dynamically off-screen initially */
+    width: 65%;
+    /* Take up massive screen reality */
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.97);
+    /* Almost opaque dark backdrop */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth dynamic slide-in curve */
+    z-index: 150;
+  }
+
+  /* State triggered by React to slide the drawer into physical viewport natively */
+  .header-right.nav-active {
+    right: 0;
+  }
+
+  /* Mutate standard horizontal layout into massive vertical column specifically for touch navigation */
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .nav-links li a {
+    font-size: 1.5rem;
+    /* Drastically upscaled typography enabling perfect touch radius */
+    letter-spacing: 3px;
+  }
+}

@@ -1,0 +1,126 @@
+.leaderboard-section {
+  padding: 100px 5%;
+  background-image: url('/images/bgtv.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.neon-blue-text {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+}
+
+.leaderboard-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.01) !important;
+  backdrop-filter: blur(5px); /* Reduced blur to see background more clearly */
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.rank {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 60px;
+  color: var(--text-muted);
+}
+
+.department {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.score {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pts {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Podium Highlights */
+.rank-1 {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-left: 5px solid gold;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.rank-1 .rank {
+  color: gold;
+  text-shadow: 0 0 10px gold;
+}
+
+.rank-1 .score {
+  color: gold;
+}
+
+.rank-2 {
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-left: 5px solid silver;
+}
+
+.rank-2 .rank {
+  color: silver;
+}
+
+.rank-3 {
+  background: linear-gradient(90deg, rgba(205, 127, 50, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-left: 5px solid #cd7f32;
+}
+
+.rank-3 .rank {
+  color: #cd7f32;
+}
+
+@media (max-width: 768px) {
+  .leaderboard-item {
+    padding: 15px;
+  }
+
+  .department {
+    font-size: 1rem;
+  }
+
+  .score {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,207 @@
+/* Hero.css */
+@import url('https://fonts.cdnfonts.com/css/samarkan');
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh + var(--header-height));
+  /* Strictly calculate the missing geometric bounds to drive the bottom separation line into the absolute infinite bottom edge of the monitor natively */
+  margin-top: calc(-1 * var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  /* Reverted to pure black structural base */
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/gradient.png');
+  /* Lifted directly into the overlay tier */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  /* Ignites the graphic natively against the pure black background mechanically creating atmospheric lighting */
+  opacity: 0.85;
+  /* Dial back raw saturation */
+  animation: atmosphericBreathe 8s infinite alternate ease-in-out;
+  /* Replicates organic glowing movement commonly used in modern web overlays */
+}
+
+@keyframes atmosphericBreathe {
+  0% {
+    opacity: 0.5;
+    filter: brightness(0.8);
+  }
+
+  100% {
+    opacity: 0.95;
+    filter: brightness(1.2);
+  }
+}
+
+/* Symmetrical Graphic Injections */
+.hero-corner-decor {
+  position: absolute;
+  bottom: 0;
+  height: 60vh;
+  /* Scaled via explicitly locked vertical limits to guarantee a perfectly flat top silhouette line locally */
+  max-height: 800px;
+  /* Heavily enlarged absolute cap for desktop rendering */
+  width: auto;
+  /* Allow natural aspect ratios to determine horizontal spread without ruining vertical symmetry */
+  z-index: 10;
+  object-fit: contain;
+  pointer-events: none;
+  /* Stops it from blocking clicks on the rest of the site */
+  /* Perfect native SVG red filter binding mimicking Ragam's deep contrast style */
+  filter: url(#duotone-red) contrast(1.4) brightness(0.85);
+}
+
+.hero-corner-decor.bottom-left {
+  left: 0;
+  bottom: -3vh;
+  /* Matched precise vertical nudge to mirror the right-side gap organically */
+}
+
+.hero-corner-decor.bottom-right {
+  right: 0;
+  bottom: -3vh;
+  /* Shifted manually slightly downwards to correct for internal PNG transparency boundaries */
+}
+
+/* Static Logo positioned aggressively sized and dropped deep into the bottom 70% quadrant */
+.hero-static-logo {
+  position: absolute;
+  top: 70%;
+  /* Set precisely to user specification */
+  left: 53%;
+  /* Shifted manually slightly right to correct visual gravity and align physically with the corners */
+  transform: translate(-50%, -50%);
+  /* Matches the scale of the object-fit cover footprint from the video frame perfectly */
+  width: 45vw;
+  max-width: 800px;
+  height: auto;
+  object-fit: contain;
+  /* Prevents visual distortion when ratios flip */
+  z-index: 5;
+  /* Pushed gracefully behind the hero-content text natively */
+  opacity: 1;
+  /* Ready out of the gate instantly */
+  /* Natively render the red SVG cleanly without inversion */
+  filter: drop-shadow(0 0 0px transparent);
+  transition: filter 1s ease;
+}
+
+/* Fired dynamically by GSAP upon video completion */
+.hero-static-logo.pulse-active {
+  animation: staticGlowPulse 4s infinite alternate ease-in-out;
+}
+
+@keyframes staticGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 40px #ff0000) drop-shadow(0 0 80px #aa0000);
+  }
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Let clicks pass through natively */
+}
+
+.hero-title {
+  position: absolute;
+  top: 30%;
+  /* Anchored sharply to the top 30% of the screen frame */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Samarkan', sans-serif;
+  /* Explicitly requested Ramayana English-Devanagari movie title font imported directly via external CDN */
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 15px;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-title span {
+  display: inline-block;
+  opacity: 0;
+  /* Handled by GSAP completely */
+  color: #fff2a8;
+  /* Noticeably warmer and distinctly pale-yellow, stepping slightly up from pure white */
+  text-shadow: none;
+  /* Glowing light halos brutally purged per explicit aesthetic request */
+}
+
+.hero-subtitle {
+  position: absolute;
+  top: 75%;
+  /* Lowered safely beneath the static image bounds */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  white-space: nowrap;
+}
+
+/* --- SMARTPHONE / MOBILE DEVICE OPTIMIZATIONS --- */
+@media (max-width: 768px) {
+
+  /* 1. Fix the massive SARGAM text title breaking out of horizontal screen limits */
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: 5px;
+  }
+
+  /* 2. Scale the central Red logo up proportionally so it doesn't get minimized by the thin viewport bounds */
+  .hero-static-logo {
+    width: 80vw;
+    /* Dominates the thin width of portrait screens perfectly */
+    top: 62%;
+    /* Finely tuned to 62% to achieve perfect cinematic balance between the title and dancers without overlap */
+  }
+
+  /* 3. Strip the sheer vertical scale of the corner graphics so they don't engulf the entire portrait screen or crash into the logo */
+  .hero-corner-decor {
+    height: auto;
+    /* Relinquish massive vertical priority */
+    width: 55vw;
+    /* Enlarged to dominate the corners more effectively while maintaining cinematic proportions */
+    bottom: -2vh;
+  }
+}

@@ -1,0 +1,195 @@
+/* TVSection.css */
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+
+.tv-section {
+  position: relative;
+  background-image: url('/images/bgtv.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Ensure background elements don't cause scrollbars */
+  padding: 100px 0;
+  background-attachment: fixed;
+  /* Optional: creates a base parallax feel */
+  background-position: center 0%;
+  /* Initial position for GSAP to animate */
+}
+
+/* Background Elements Styling */
+.bg-element {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  /* Lowest child layer */
+  /* transition: transform 0.3s ease-out; */
+  /* Removed to let GSAP handle it smoothly */
+  will-change: transform;
+  /* Hint for performance */
+}
+
+.upper-bg {
+  top: 0;
+  left: 0;
+  width: 35vw;
+  /* Dynamic sizing based on viewport width */
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+.lower-bg {
+  bottom: 0;
+  right: 0;
+  width: 40vw;
+  max-width: 700px;
+  opacity: 0.9;
+}
+
+.disco-ball {
+  top: -20px;
+  right: 5vw;
+  width: 15vw;
+  max-width: 250px;
+  transform-origin: top center;
+  animation: swing 4s ease-in-out infinite alternate;
+}
+
+@keyframes swing {
+  from {
+    transform: rotate(-3deg);
+  }
+
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+
+.tv-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+/* Base class for sliding dates hidden directly behind center */
+.date-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Yatra One', cursive;
+  /* Matches the cultural, bouncy font in the reference image */
+  font-size: 4rem;
+  /* Adjusted for the new font's visual weight */
+  font-weight: 900;
+  color: #fff2a8;
+  /* Synchronized to the SARGAM title text color natively */
+  text-shadow: none;
+  /* Removed the ambient glow per explicit request */
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  z-index: 2;
+  /* Sits above bg-elements but behind TV frame */
+  transition: color 0.3s ease;
+  /* Smooth transition for the hover effect */
+  cursor: default;
+}
+
+.date-slide:hover {
+  color: #ff0000;
+  /* Direct red transition on hover natively */
+}
+
+.tv-container {
+  position: relative;
+  z-index: 10;
+  /* Locked heavily above the dates */
+  margin: 0 auto;
+}
+
+.tv-frame {
+  position: relative;
+  width: 550px;
+  /* Reduced to make room for sliding text */
+  max-width: 60vw;
+  /* Scales properly on tablets leaving 20vw each side */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The TV transparent PNG */
+.tv-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 3;
+  /* In front of video */
+  pointer-events: none;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.8));
+  /* Base drop shadow instead of neon to emphasize masking */
+}
+
+/* The video positioned precisely underneath the center empty cutout of the PNG */
+.tv-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Locks exactly center relative to outer TV frame */
+  width: 70%;
+  /* Common proportional sizing for cutouts */
+  height: 58%;
+  object-fit: cover;
+  /* Fills its designated inner glass area natively */
+  z-index: 2;
+  /* Behind TV frame overlay */
+  border-radius: 40px;
+  /* Sweeping edges like a CRT */
+  background: black;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+@media (max-width: 768px) {
+  .date-slide {
+    font-size: 1.8rem;
+    /* Slightly larger for visibility */
+  }
+
+  .upper-bg {
+    width: 70vw;
+    /* Enlarge significantly on mobile */
+    opacity: 1;
+    /* More prominent */
+  }
+
+  .lower-bg {
+    width: 80vw;
+    opacity: 1;
+  }
+
+  .disco-ball {
+    width: 45vw;
+    /* Make disco more prominent as requested */
+    right: -5vw;
+    /* Position slightly off-screen to look more natural if needed, or adjust */
+    top: -10px;
+  }
+
+  .tv-frame {
+    width: 90vw;
+    /* Ensure TV takes up more horizontal space on mobile */
+    max-width: 90vw;
+  }
+}

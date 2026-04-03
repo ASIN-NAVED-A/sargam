@@ -1,0 +1,108 @@
+:root {
+  /* Colors */
+  --bg-color: #050505;
+  --text-primary: #ffffff;
+  --text-muted: #a0a0a0;
+  
+  /* Neon Accents */
+  --neon-pink: #ff007f;
+  --neon-blue: #00f0ff;
+  --neon-purple: #9d00ff;
+  --neon-green: #39ff14;
+  
+  /* Typography */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  
+  /* Layout */
+  --header-height: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-purple);
+}
+
+/* Utility / Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Glow utilities */
+.glow-pink { text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink); color: var(--neon-pink); }
+.glow-blue { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue); color: var(--neon-blue); }
+.glow-purple { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple); color: var(--neon-purple); }
+
+.bg-glow-pink { background: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
+.bg-glow-blue { background: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); }
+
+section {
+  min-height: 100vh; /* Re-established absolute full-page bounds natively per user confirmation */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%; /* Native structural padding bounding the wrapped elements uniformly */
+}
+
+/* Glowing Neon White Theme Divider Line injected strictly at the structural tail of each primary section block */
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Snapped fully to the left edge boundary */
+  width: 100%; /* Spans strictly across the entire viewport to the right edge */
+  height: 2px; /* Super thin surgical line */
+  background: #fff; /* Base white core */
+  /* Intense symmetrical pure-white neon halo matching the SARGAM overlay */
+  box-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 30px rgba(255,255,255,0.7);
+  border-radius: 2px;
+}
+
