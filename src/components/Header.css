@@ -83,6 +83,12 @@
     /* Activate and reveal animated hamburger icon organically */
   }
 
+  .site-header {
+    background: rgba(5, 5, 5, 0.9) !important; /* Makes the top navbar less transparent on mobile */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
   /* Hamburger to X Transform Animation logic */
   .menu-toggle.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -105,8 +111,8 @@
     width: 65%;
     /* Take up massive screen reality */
     height: 100vh;
-    background: rgba(5, 5, 5, 0.6);
-    /* Translucent dark backdrop */
+    background: rgba(5, 5, 5, 0.9);
+    /* Frosted dark backdrop */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
