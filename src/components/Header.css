@@ -105,8 +105,8 @@
     width: 65%;
     /* Take up massive screen reality */
     height: 100vh;
-    background: rgba(5, 5, 5, 0.97);
-    /* Almost opaque dark backdrop */
+    background: rgba(5, 5, 5, 0.6);
+    /* Translucent dark backdrop */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-left: 1px solid rgba(255, 255, 255, 0.05);
