@@ -168,14 +168,27 @@
   }
 
   .upper-bg {
-    width: 70vw;
-    /* Enlarge significantly on mobile */
+    width: 100vw;
+    height: 35vh;
+    object-fit: fill;
+    max-width: none;
+    top: 0;
+    left: 0;
+    transform: none;
     opacity: 1;
-    /* More prominent */
   }
 
   .lower-bg {
-    width: 80vw;
+    width: 140vw;
+    /* Horizontally stretched to push the visible graphic to the left edge */
+    height: 40vh;
+    object-fit: fill;
+    max-width: none;
+    bottom: 0;
+    right: 0;
+    /* Anchored to the right so it stretches exclusively leftwards */
+    left: auto;
+    transform: none;
     opacity: 1;
   }
 
