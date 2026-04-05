@@ -182,26 +182,36 @@
 
 /* --- SMARTPHONE / MOBILE DEVICE OPTIMIZATIONS --- */
 @media (max-width: 768px) {
+  
+  /* Lock mathematically to cinematic 9:16 portrait bounds to stop scroll jumping */
+  .hero-section {
+    height: calc(100vw * 16 / 9);
+    min-height: unset;
+  }
 
   /* 1. Scale up the SARGAM title for a bolder smartphone appearance */
   .hero-title {
     font-size: clamp(3.5rem, 15vw, 6rem);
+    top: 27%; /* Push up into the golden ratio of the new 9:16 frame */
   }
 
-  /* 2. Scale the central Red logo up proportionally so it doesn't get minimized by the thin viewport bounds */
+  /* 2. Reposition and scale the central Red logo */
   .hero-static-logo {
-    width: 80vw;
-    /* Dominates the thin width of portrait screens perfectly */
-    top: 62%;
-    /* Finely tuned to 62% to achieve perfect cinematic balance between the title and dancers without overlap */
+    width: 85vw;
+    top: 58%; /* Exact physical center of gravity in the remaining space */
+  }
+  
+  /* 3. Drop subtitle cleanly beneath the logo */
+  .hero-subtitle {
+    top: 85%;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
   }
 
-  /* 3. Strip the sheer vertical scale of the corner graphics so they don't engulf the entire portrait screen or crash into the logo */
+  /* 4. Strip the sheer vertical scale of the corner graphics */
   .hero-corner-decor {
     height: auto;
-    /* Relinquish massive vertical priority */
-    width: 55vw;
-    /* Enlarged to dominate the corners more effectively while maintaining cinematic proportions */
-    bottom: -2vh;
+    width: 60vw;
+    bottom: 0;
   }
 }
