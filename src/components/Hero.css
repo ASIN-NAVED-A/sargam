@@ -183,8 +183,10 @@
 /* --- SMARTPHONE / MOBILE DEVICE OPTIMIZATIONS --- */
 @media (max-width: 768px) {
 
-  /* 1. Fix the massive SARGAM text title breaking out of horizontal screen limits */
-  /* .hero-title relies on responsive clamp() for scaling */
+  /* 1. Scale up the SARGAM title for a bolder smartphone appearance */
+  .hero-title {
+    font-size: clamp(3.5rem, 15vw, 6rem);
+  }
 
   /* 2. Scale the central Red logo up proportionally so it doesn't get minimized by the thin viewport bounds */
   .hero-static-logo {
