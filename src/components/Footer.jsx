@@ -55,7 +55,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2026 Sargam Arts Festival. All Rights Reserved. | Yukthi College Union GECB</p>
+        <p>&copy; 2026 Sargam Arts Festival. All Rights Reserved. | Yukthi College Union GECB| Designed & Developed by Asin Naved A</p>
       </div>
     </footer>
   );
