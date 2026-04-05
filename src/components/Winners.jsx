@@ -112,12 +112,19 @@ const Winners = () => {
   const renderParticipantDetails = (chest, name, className, department, type, categoryId) => {
     if (!name && !chest && !department) return <span className="winners-participant-name">-</span>;
     
+    let formattedChest = chest;
+    if (chest && /^\d+$/.test(String(chest).trim())) {
+      formattedChest = String(chest).trim().padStart(3, '0');
+    } else if (chest) {
+      formattedChest = String(chest).trim();
+    }
+    
     if (categoryId === 'kalajatha') {
       return (
         <ul className="winners-participant-details">
           <li>
             <span className="winners-detail-label">Department:</span> 
-            <span className="winners-participant-name">{department || name || chest || '-'}</span>
+            <span className="winners-participant-name">{department || name || formattedChest || '-'}</span>
           </li>
         </ul>
       );
@@ -126,7 +133,7 @@ const Winners = () => {
     const isGroup = type && (type.toLowerCase() === 'g' || type.toLowerCase() === 'group');
     return (
       <ul className="winners-participant-details">
-        <li><span className="winners-detail-label">Chest No:</span> {chest || '-'}</li>
+        <li><span className="winners-detail-label">Chest No:</span> {formattedChest || '-'}</li>
         <li>
           <span className="winners-detail-label">Name:</span> 
           <span className="winners-participant-name">{name || '-'} {isGroup && name ? '(Head)' : ''}</span>
