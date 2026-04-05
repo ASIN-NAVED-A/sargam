@@ -141,16 +141,14 @@
   /* Base drop shadow instead of neon to emphasize masking */
 }
 
-/* The video positioned precisely underneath the center empty cutout of the PNG */
 .tv-video {
   position: absolute;
-  top: 50%;
+  top: 50.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Locks exactly center relative to outer TV frame */
+  /* perfectly nested behind the cutout of retro_tv.png based on visual calibration */
   width: 70%;
-  /* Common proportional sizing for cutouts */
-  height: 58%;
+  height: 63%;
   object-fit: cover;
   /* Fills its designated inner glass area natively */
   z-index: 2;
@@ -159,6 +157,7 @@
   /* Sweeping edges like a CRT */
   background: black;
   filter: contrast(1.1) brightness(0.9);
+  clip-path: inset(0 0 0 3%); /* explicitly cuts any extra left spill */
 }
 
 @media (max-width: 768px) {
