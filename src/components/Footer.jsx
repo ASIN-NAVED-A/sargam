@@ -48,6 +48,7 @@ const Footer = () => {
             <a href="mailto:yukticollegeuniongecb@gmail.com"><MailIcon /> yukticollegeuniongecb</a>
             <a href="tel:+917025567759"><PhoneIcon /> CHAIRMAN GECB</a>
             <a href="tel:+916238673467"><PhoneIcon /> ARTS CLUB SECRETARY GECB</a>
+            <a href="tel:+919633918611"><PhoneIcon /> SARGAM CONVENOR</a>
             <a href="https://gecbh.ac.in" target="_blank" rel="noreferrer"><GlobeIcon /> GEC Barton Hill</a>
           </div>
         </div>
