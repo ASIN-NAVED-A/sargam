@@ -42,11 +42,11 @@
     -webkit-overflow-scrolling: touch;
     mask-image: linear-gradient(to right, black 90%, transparent 100%);
   }
-  
+
   .winners-categories-nav::-webkit-scrollbar {
     height: 4px;
   }
-  
+
   .winners-categories-nav::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 2px;
@@ -132,6 +132,7 @@
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
 .winners-event-search-input:focus {
@@ -172,7 +173,8 @@
   background: rgba(255, 51, 51, 0.8);
 }
 
-.winners-loading-spinner, .winners-empty-state {
+.winners-loading-spinner,
+.winners-empty-state {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,8 +196,15 @@
 }
 
 @keyframes winnersPulseOrb {
-  from { transform: scale(0.8); opacity: 0.5; }
-  to { transform: scale(1.2); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
 }
 
 /* Grid & Accordion Cards */
@@ -218,7 +227,9 @@
 .winners-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.8), transparent);
   opacity: 0;
@@ -236,7 +247,8 @@
   border-color: rgba(255, 51, 51, 0.4);
 }
 
-.winners-card:hover::before, .winners-card.expanded::before {
+.winners-card:hover::before,
+.winners-card.expanded::before {
   opacity: 1;
 }
 
@@ -272,6 +284,7 @@
   letter-spacing: 1px;
   margin: 0;
   line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .winners-category-badge {
@@ -349,14 +362,51 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-.winners-first { border-left-color: #ffd700; box-shadow: inset 20px 0 30px -20px rgba(255, 215, 0, 0.1); }
-.winners-second { border-left-color: #c0c0c0; box-shadow: inset 20px 0 30px -20px rgba(192, 192, 192, 0.1); }
-.winners-third { border-left-color: #cd7f32; box-shadow: inset 20px 0 30px -20px rgba(205, 127, 50, 0.1); }
+.winners-first {
+  border-left-color: #ffd700;
+  box-shadow: inset 20px 0 30px -20px rgba(255, 215, 0, 0.1);
+}
+
+.winners-second {
+  border-left-color: #c0c0c0;
+  box-shadow: inset 20px 0 30px -20px rgba(192, 192, 192, 0.1);
+}
+
+.winners-third {
+  border-left-color: #cd7f32;
+  box-shadow: inset 20px 0 30px -20px rgba(205, 127, 50, 0.1);
+}
+
+.winners-agrade {
+  border-left-color: rgba(168, 255, 184, 0.5);
+  box-shadow: inset 20px 0 30px -20px rgba(168, 255, 184, 0.1);
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.winners-agrade .winners-info-box {
+  width: 100%;
+}
+
+.winners-agrade-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.agrade-participant-wrapper {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 8px 12px;
+  border-left: 2px solid rgba(168, 255, 184, 0.3);
+}
 
 /* Apply rank colors directly instead of medal variable for maximum compatibility */
 .winners-medal-wrapper {
   font-size: 1.8rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .winners-info-box {
@@ -376,6 +426,32 @@
 .winners-participant-name {
   font-size: 1.1rem;
   color: #ddd;
+}
+
+.winners-participant-details {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.winners-participant-details li {
+  font-size: 0.95rem;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.winners-detail-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 105px;
 }
 
 .winners-first .winners-participant-name {
@@ -418,7 +494,7 @@
   .winners-event-name {
     font-size: 1.15rem;
   }
-  
+
   .winners-category-badge {
     font-size: 0.7rem;
   }
@@ -443,10 +519,10 @@
   .winners-expand-btn {
     padding: 5px;
   }
-  
+
   .winners-content-area {
     max-height: 55vh;
     overflow-y: auto;
-    padding-right: 8px; 
+    padding-right: 8px;
   }
 }

@@ -20,14 +20,15 @@
 
 .footer-big-text {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(4rem, 16vw, 15rem);
+  font-size: clamp(4rem, 11.5vw, 12rem);
   font-weight: 900;
   color: #fff2a8;
   margin: 0;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.15em;
+  margin-left: 0.15em;
   transform: scaleY(1.4);
   white-space: nowrap;
   display: flex;
@@ -50,12 +51,29 @@
   background-clip: text;
 }
 
-.footer-big-text span:nth-child(1):hover { background-image: url('/images/footer-1.svg'); }
-.footer-big-text span:nth-child(2):hover { background-image: url('/images/footer-2.svg'); }
-.footer-big-text span:nth-child(3):hover { background-image: url('/images/footer-3.svg'); }
-.footer-big-text span:nth-child(4):hover { background-image: url('/images/footer-4.svg'); }
-.footer-big-text span:nth-child(5):hover { background-image: url('/images/r1.jpg'); }
-.footer-big-text span:nth-child(6):hover { background-image: url('/images/img1.png'); }
+.footer-big-text span:nth-child(1):hover {
+  background-image: url('/images/footer-1.svg');
+}
+
+.footer-big-text span:nth-child(2):hover {
+  background-image: url('/images/footer-2.svg');
+}
+
+.footer-big-text span:nth-child(3):hover {
+  background-image: url('/images/footer-3.svg');
+}
+
+.footer-big-text span:nth-child(4):hover {
+  background-image: url('/images/footer-4.svg');
+}
+
+.footer-big-text span:nth-child(5):hover {
+  background-image: url('/images/r1.jpg');
+}
+
+.footer-big-text span:nth-child(6):hover {
+  background-image: url('/images/img1.png');
+}
 
 .footer-content {
   display: flex;
@@ -149,6 +167,14 @@
 }
 
 .footer-bottom p {
+  color: #fff2a8;
+  opacity: 0.5;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+footer-bottom p {
   color: #fff2a8;
   opacity: 0.5;
   font-size: 0.85rem;

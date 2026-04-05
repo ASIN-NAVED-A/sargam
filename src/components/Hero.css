@@ -144,14 +144,15 @@
   transform: translate(-50%, -50%);
   font-family: 'Samarkan', sans-serif;
   /* Explicitly requested Ramayana English-Devanagari movie title font imported directly via external CDN */
-  font-size: 8rem;
+  font-size: clamp(2.5rem, 10vw, 8rem);
   font-weight: 900;
-  letter-spacing: 15px;
+  letter-spacing: clamp(5px, 2vw, 15px);
   margin: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
   width: 100%;
+  white-space: nowrap;
 }
 
 .hero-title span {
@@ -183,10 +184,7 @@
 @media (max-width: 768px) {
 
   /* 1. Fix the massive SARGAM text title breaking out of horizontal screen limits */
-  .hero-title {
-    font-size: 3.5rem;
-    letter-spacing: 5px;
-  }
+  /* .hero-title relies on responsive clamp() for scaling */
 
   /* 2. Scale the central Red logo up proportionally so it doesn't get minimized by the thin viewport bounds */
   .hero-static-logo {

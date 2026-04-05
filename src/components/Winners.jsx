@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Flame, Music, Film, BookOpen, Palette, LayoutGrid, Search, ChevronDown } from 'lucide-react';
+import { Flame, Music, Film, BookOpen, Palette, LayoutGrid, Search, ChevronDown, Users } from 'lucide-react';
 import './Winners.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES = [
+  { id: 'kalajatha', label: 'Kalajatha', icon: Users },
   { id: 'dance', label: 'Dance', icon: Flame },
   { id: 'music', label: 'Music & Instrumental', icon: Music },
   { id: 'theatrical', label: 'Theatrical', icon: Film },
@@ -42,6 +43,8 @@ const Winners = () => {
         assignedId = 'literature';
       } else if (rawCat === 'A' || rawCat === 'ARTS' || rawCat === 'ART' || rawCatLower.includes('paint') || rawCatLower.includes('draw')) {
         assignedId = 'art';
+      } else if (rawCat === 'K' || rawCatLower.includes('kalajatha')) {
+        assignedId = 'kalajatha';
       } else if (rawCat === 'M') {
         assignedId = 'misc';
       }
@@ -104,6 +107,67 @@ const Winners = () => {
 
   const toggleAccordion = (id) => {
     setExpandedEvent(prev => prev === id ? null : id);
+  };
+
+  const renderParticipantDetails = (chest, name, className, department, type, categoryId) => {
+    if (!name && !chest && !department) return <span className="winners-participant-name">-</span>;
+    
+    if (categoryId === 'kalajatha') {
+      return (
+        <ul className="winners-participant-details">
+          <li>
+            <span className="winners-detail-label">Department:</span> 
+            <span className="winners-participant-name">{department || name || chest || '-'}</span>
+          </li>
+        </ul>
+      );
+    }
+
+    const isGroup = type && (type.toLowerCase() === 'g' || type.toLowerCase() === 'group');
+    return (
+      <ul className="winners-participant-details">
+        <li><span className="winners-detail-label">Chest No:</span> {chest || '-'}</li>
+        <li>
+          <span className="winners-detail-label">Name:</span> 
+          <span className="winners-participant-name">{name || '-'} {isGroup && name ? '(Head)' : ''}</span>
+        </li>
+        <li>
+          <span className="winners-detail-label">{isGroup ? 'Department:' : 'Class:'}</span> 
+          {isGroup ? (department || '-') : (className || '-')}
+        </li>
+      </ul>
+    );
+  };
+
+  const renderAGradeList = (agradeString, type, categoryId) => {
+    if (!agradeString || typeof agradeString !== 'string') return null;
+    const entries = agradeString.split(',').map(e => e.trim()).filter(e => e.length > 0);
+    if (entries.length === 0) return null;
+
+    const isGroup = type && (type.toLowerCase() === 'g' || type.toLowerCase() === 'group');
+
+    return (
+      <div className="winners-row-item winners-agrade">
+        <div className="winners-medal-wrapper" style={{ marginTop: '2px' }}>⭐</div>
+        <div className="winners-info-box">
+          <span className="winners-rank-label">A Grade</span>
+          <div className="winners-agrade-list">
+            {entries.map((entry, idx) => {
+              const parts = entry.split('|').map(p => p.trim());
+              const chest = parts[0];
+              const name = parts[1];
+              const classOrDept = parts[2];
+              
+              return (
+                <div key={idx} className="agrade-participant-wrapper">
+                  {renderParticipantDetails(chest, name, isGroup ? null : classOrDept, isGroup ? classOrDept : null, type, categoryId)}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
   };
 
   // Filter events
@@ -182,7 +246,13 @@ const Winners = () => {
                     <div className="winners-header-text">
                       <h3 className="winners-event-name">{item.Event}</h3>
                       <div className="winners-category-badge">
-                        {CATEGORIES.find(c => c.id === item.categoryId)?.label || item.Category}
+                        <span>{CATEGORIES.find(c => c.id === item.categoryId)?.label || item.Category}</span>
+                        {item.Type && item.categoryId !== 'kalajatha' && (
+                          <span className="winners-type-indicator">
+                            <span style={{ margin: '0 8px', opacity: 0.5 }}>•</span>
+                            {item.Type.toLowerCase() === 'g' || item.Type.toLowerCase() === 'group' ? 'Group' : 'Individual'}
+                          </span>
+                        )}
                       </div>
                     </div>
                     <button className="winners-expand-btn">
@@ -195,26 +265,28 @@ const Winners = () => {
                       <div className="winners-row-item winners-first">
                         <div className="winners-medal-wrapper">🥇</div>
                         <div className="winners-info-box">
-                          <span className="winners-rank-label">1st Place</span>
-                          <span className="winners-participant-name">{item.First || '-'}</span>
+                          <span className="winners-rank-label">First</span>
+                          {renderParticipantDetails(item.First_Chest, item.First_Name, item.First_Class, item.First_Department || item.First_Depatment, item.Type, item.categoryId)}
                         </div>
                       </div>
                       
                       <div className="winners-row-item winners-second">
                         <div className="winners-medal-wrapper">🥈</div>
                         <div className="winners-info-box">
-                          <span className="winners-rank-label">2nd Place</span>
-                          <span className="winners-participant-name">{item.Second || '-'}</span>
+                          <span className="winners-rank-label">Second</span>
+                          {renderParticipantDetails(item.Second_Chest, item.Second_Name, item.Second_Class, item.Second_Department || item.Second_Depatment, item.Type, item.categoryId)}
                         </div>
                       </div>
 
                       <div className="winners-row-item winners-third">
                         <div className="winners-medal-wrapper">🥉</div>
                         <div className="winners-info-box">
-                          <span className="winners-rank-label">3rd Place</span>
-                          <span className="winners-participant-name">{item.Third || '-'}</span>
+                          <span className="winners-rank-label">Third</span>
+                          {renderParticipantDetails(item.Third_Chest, item.Third_Name, item.Third_Class, item.Third_Department || item.Third_Depatment, item.Type, item.categoryId)}
                         </div>
                       </div>
+
+                      {renderAGradeList(item.A_Grade_List, item.Type, item.categoryId)}
                     </div>
                   </div>
                   

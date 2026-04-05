@@ -84,9 +84,9 @@
   }
 
   .site-header {
-    background: rgba(5, 5, 5, 0.9) !important; /* Makes the top navbar less transparent on mobile */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(10, 10, 10, 0.75) !important; /* Semi-transparent to let blur show through */
+    backdrop-filter: blur(25px) !important; /* Heavy blur to make text underneath illegible */
+    -webkit-backdrop-filter: blur(25px) !important;
   }
 
   /* Hamburger to X Transform Animation logic */
@@ -111,10 +111,10 @@
     width: 65%;
     /* Take up massive screen reality */
     height: 100vh;
-    background: rgba(5, 5, 5, 0.9);
+    background: rgba(10, 10, 10, 0.75) !important;
     /* Frosted dark backdrop */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: center;
