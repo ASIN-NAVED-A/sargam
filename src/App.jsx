@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Analytics } from '@vercel/analytics/react';
 import Intro from './components/Intro';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -44,6 +45,7 @@ function App() {
 
         <Footer />
       </div>
+      <Analytics />
     </div>
   );
 }
